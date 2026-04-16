@@ -213,3 +213,13 @@ This platform is designed to map to:
 2. **HNDL Metrics** are model-based projections, not measured exfiltration volumes. Real telemetry integration would require PCAP or SIEM feed ingestion.
 3. **PQC Detection** depends on cipher suite string matching. Hybrid PQC implementations that do not surface standard KYBER/KEM identifiers in TLS handshake metadata may be missed.
 4. **SQLite** is appropriate for single-node deployments. For multi-analyst enterprise deployments, migrate to PostgreSQL via the SQLModel connection string in `database.py`.
+
+---
+
+## Live Deployment
+
+Q-Guardian is currently deployed and accessible at:
+
+🔗 https://pnb-q-guardian.vercel.app
+
+This instance represents the active production frontend environment.
