@@ -1,9 +1,8 @@
 import os
+from pathlib import Path
 from typing import List, Optional
 
 from dotenv import load_dotenv
-
-load_dotenv()
 
 
 def _clean_csv(value: str) -> List[str]:
@@ -41,3 +40,8 @@ DISCOVERY_MAX_ASSETS = int(DISCOVERY_MAX_ASSETS) if DISCOVERY_MAX_ASSETS else No
 DOCS_ENABLED = os.getenv("ENABLE_API_DOCS", "false" if APP_ENV == "production" else "true").strip().lower() == "true"
 
 DATABASE_URL = os.getenv("DATABASE_URL", "sqlite:///./qguardian.db").strip()
+
+# Load local development secrets only outside production so Render relies on its own env vars.
+if APP_ENV != "production":
+    _ENV_PATH = Path(__file__).resolve().parents[1] / ".env"
+    load_dotenv(_ENV_PATH)
